@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+      h1{color:blue;text-align:center}
+      .input{color:white;}
+    </style>
+    <!-- CSS here -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<body style="background-image:url({% static 'assets/img/reg-bg.jpeg' %})">
+<form action="register" method="post" align="center">
+    {% csrf_token %}
+    <div class="login-form">
+        <h1>REGISTRATION FORM</h1>
+        <div class="input" >
+            <label >Full Name</label>
+                <input  type="text" name="username" placeholder="Enter your full name">
+        </div>
+        <div class="input" >
+            <label >DOB</label>
+                <input  type="date" name="dob" >
+        </div>
+          <div class="input">
+            <label >Age</label>
+              <input  type="number" name="age" placeholder="Enter your age"><br>
+        </div>
+        <div class="input">
+            <label >Gender</label>
+            <label>Male</label>
+              <input  type="radio" name="Gender" >
+            <label>Female</label>
+              <input type="radio" name="Gender"><br>
+        </div>
+         <div class="input">
+            <label >Phone Number</label>
+              <input  type="number" name="phone_number" placeholder="Enter your Phone number"><br>
+        </div>
+         <div class="input">
+            <label >Email ID</label>
+              <input  type="email" name="email" placeholder="Enter you E-mail ID"><br>
+        </div>
+        <div class="input">
+            <label >Address</label>
+              <input  type="text" name="address" placeholder="Enter you Address"><br>
+        </div>
+        <div class="input">
+            <label >District</label>
+              <input  type="text" name="address" placeholder="Enter you Address"><br>
+        </div>
+        <div class="input">
+            <label >District</label>
+            <select name="dist" id="District" >
+            <option value="0">--Select District--</option>
+            {% for item in district  %}
+            <option value="{{ item.name }}">{{ item.name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <div class="input">
+            <label >Branch</label>
+            <select name="branch" id="Branch" >
+            <option value="0">--Select Branch--</option>
+            {% for item in branch  %}
+            <option value="{{ item.branch.district }}">{{ item.name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+
+        <div class="input">
+            <label >Account type</label>
+            <select>
+            <option value = "Savings"> Savings account
+            </option>
+            <option value = "Current"> Current Account
+            </option>
+            </select><br>
+        </div>
+        <div class="input">
+            <label >Materials Provided</label><br>
+            <label>Debit card</label>
+                <input type="checkbox" name="debit_card"><br>
+            <label>Credit card</label>
+                <input type="checkbox" name="credit_card"><br>
+            <label>Cheque book</label>
+                <input type="checkbox" name="cheque">
+        </div>
+         <div class="form-input pt-30">
+                <input type="submit" name="submit" ><br>
+                <a class="btn btn-primary"   href="logout">Log out</a>
+         </div>
+    </div>
+</form>
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+</body>
+</html>

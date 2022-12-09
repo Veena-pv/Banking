@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+      h1{color:red;text-align:center}
+    </style>
+    <!-- CSS here -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<div>
+<body style="background-image:url({% static 'assets/img/reg-bg.jpeg' %})">
+
+<form action="register" method="post" align="center">
+    {% csrf_token %}
+    <div class="login-form">
+
+            <h2>Registration Here</h2>
+         <div class="form-input">
+                <input  type="text" name="username" placeholder="Username">
+            </div>
+         <div class="form-input">
+                <input type="password" name="password" placeholder="Password">
+            </div>
+         <div class="form-input">
+                <input type="password" name="cpassword" placeholder="Confirm Password">
+            </div>
+            <div class="form-input pt-30">
+                <input type="submit" name="submit" >
+            </div>
+    </div>
+</form>
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+</body>
+</div>
+</html>
